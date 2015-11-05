@@ -1,0 +1,77 @@
+As a User I can:
+  -Register an new account
+    ~A working form that allows a user to enter a username, password, and password confirmation
+    ~The form creates a new account as long as:
+      ~the username is not taken
+        ~if it is taken, returns an error saying username is taken
+      ~the password is at least 6 characters long
+        ~if invalid returns an error saying password is too short
+      ~the confirmation == password
+        ~if invalid returns an error saying confirmation does not match password
+      ~the form has all fields completed
+
+  -Log into an existing account
+    ~A working form that allows a user to enter in a username and password
+    ~The form authenticates a user and returns a "Sucessfully logged in" so long as the information is valid and form is complete
+      ~if the username/password is invalid, returns an error daying username/password is incorrect
+
+  -Play the puzzle once logged in
+    ~Checks that a user has been authenticated and if so allows the player to play the game
+
+  -Start a new game with N discs
+    ~the user can generate a new puzzle with any number of discs they choose, within reason (1-12 discs)
+    ~for any puzzle starting with more than 8 discs, warn the user of the minimum number of moves it takes to solve the puzzle ("Warning! This puzzle takes at least 255/511/1023/2047/4095 moves to solve!")
+
+  -Move a disc from one tower to another within the rules of the game
+    ~Can click a tower to pick up the top disc on the tower
+    ~Can click a tower to place a held disc in a valid position:
+      ~Tower is empty OR
+      ~top disc on tower is larger than held disc
+
+  -Complete the puzzle
+    ~when all the discs are in the proper order on the 3rd tower, site will notify user that the puzzle is finished, the # of moves, time taken, and submit these statistics to the database.
+
+  -Manually enter in records
+    ~Once logged in, a working form that allows a user to enter in statistics for a puzzle:
+      ~number of discs, number of moves, time taken to solve
+    ~if form incomplete, throw error
+    ~if number of discs is 0, throw error
+    ~if number of moves is less than minimum number of moves needed to solve (2^N-1), throw error
+    ~if time is 0, throw error
+
+  -Access all of my records
+    ~upon clicking a button, displays a list of entries chronologically
+    ~shows game ID number, discs, moves, time, time/date updated at
+
+  -Delete a record
+    ~A form that requires the ID of an entry and a field that requires you to enter the word "DELETE"
+      ~If DELETE is not entered, throw an error
+      ~if ID does not exist, throw an error
+      ~if form incomplete throw error
+      ~if valid, remove an entry from the database
+
+  -Update a record
+    ~A form that requires the ID, discs, moves, and time
+    ~checks for form completion/validity much like manual submit
+    ~checks for existing ID, if not, throw error
+    ~if valid, updates the record in the database
+
+  -View my average stats
+    ~a form that requires a number of discs for a puzzle
+    ~displays stats based on all records for that user with that many discs:
+      ~minimum number of moves
+      ~times completed in minimum
+      ~percentage completed in minimum
+      ~average time
+      ~average # of moves
+    ~if there are no entries for # of discs, displays "No records"
+
+  -View my leaderboard
+    ~a form that requires a number of discs for a puzzle
+    ~displays top 10 fastest times for that puzzle for that user
+    ~if less than 10 entries, displays only up to the # of entries
+
+  -View global leaderboard
+    ~form that asks for number of discs for a puzzle
+    ~displays top 10 fastest times for that puzzle across ALL entries
+    ~if less than 10 entries, displays only up to the # of entries
