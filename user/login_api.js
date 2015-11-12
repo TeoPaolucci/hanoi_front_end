@@ -1,7 +1,7 @@
-var logRegApi = {
-  backend: 'http://localhost:3000'
+var loginApi = {
+  backend: 'http://localhost:3000',
 
-  ajax.: function(config, cb) {
+  ajax: function(config, cb) {
     $.ajax(config).done(function(data, textStatus, jqxhr) {
       cb(null, data);
     }).fail(function(jqxhr, status, error) {
@@ -12,7 +12,7 @@ var logRegApi = {
   register: function register(credentials, callback) {
     this.ajax({
       method: 'POST',
-      url: this.backend + '/users',
+      url: this.backend + '/register',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
       dataType: 'json'
@@ -45,7 +45,7 @@ var logRegApi = {
       method: 'GET',
       url: this.backend + '/user_games',
       headers: {
-        Authorization 'Token token=' + token
+        Authorization: 'Token token=' + token
       },
       dataType: 'json',
     }, callback);
