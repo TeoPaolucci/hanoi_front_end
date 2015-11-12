@@ -8,20 +8,27 @@
   <script type="text/javascript" src="user/login.js" defer charset="utf-8"></script>
 </head>
 <body>
-  <div id="log-reg-bar">
-    <form id="register">
-      <input name="email" type="text" placeholder="E-mail">
-      <input name="password" type="password" placeholder="Password">
-      <input name="confirm-password" type="password" placeholder="Confirm Password">
-      <input name="register" type="submit" value="Register">
-    </form>
-    <form id="login">
-      <input name="email" type="text" placeholder="E-mail">
-      <input name="password" type="password" placeholder="Password">
-      <input name="login" type="submit" value="Login">
-    </form>
+  <div class="log-reg-bar">
+    <div class="forms">
+      <form id="register">
+        <input name="email" type="text" placeholder="E-mail">
+        <input name="password" type="password" placeholder="Password">
+        <input name="confirm-password" type="password" placeholder="Confirm Password">
+        <input name="register" type="submit" value="Register">
+      </form>
+      <form id="login">
+        <input name="email" type="text" placeholder="E-mail">
+        <input name="password" type="password" placeholder="Password">
+        <input name="login" type="submit" value="Login">
+      </form>
+    </div>
+    <div class="results">
+      <div class="reg-result">REGISTER OUTPUT</div>
+      <div class="log-result">LOGIN OUTPUT</div>
+    </div>
   </div>
-  <label for="result">Result</label>
-  <textarea id="result"></textarea>
+  <div class="title">
+    The Tower of Hanoi
+  </div>
 </body>
 </html>
