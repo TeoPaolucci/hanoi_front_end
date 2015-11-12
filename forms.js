@@ -1,3 +1,5 @@
+userToken = '';
+
 $(document).ready(function(){
   var form2object = function(form) {
     var data = {};
@@ -26,7 +28,7 @@ $(document).ready(function(){
 
   $('#register').on('submit', function(e) {
     var credentials = wrap('credentials', form2object(this));
-    loginApi.register(credentials, callback);
+    hanoiApi.register(credentials, callback);
     e.preventDefault();
   });
 
@@ -37,10 +39,16 @@ $(document).ready(function(){
         callback(error);
         return;
       }
+      userToken = data.user.token;
       callback(null, data);
-      $('.token').val(data.user.token);
     };
     e.preventDefault();
-    loginApi.login(credentials, cb);
+    hanoiApi.login(credentials, cb);
+  });
+
+  $('#create').on('submit', function(e){
+    var game = wrap('game', form2object(this));
+    hanoiApi.createGame(userToken, game, callback);
+    e.preventDefault();
   });
 });

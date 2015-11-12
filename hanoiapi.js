@@ -1,4 +1,4 @@
-var loginApi = {
+var hanoiApi = {
   backend: 'http://localhost:3000',
 
   ajax: function(config, cb) {
