@@ -4,9 +4,10 @@
   <title>Tower of Hanoi</title>
   <link rel="stylesheet" href="index.css">
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.js" defer charset="utf-8"></script>
+  <script type="text/javascript" src="scripts/handlebars.js" defer charset="utf-8"></script>
   <script type="text/javascript" src="scripts/hanoiapi.js" defer charset="utf-8"></script>
   <script type="text/javascript" src="scripts/login.js" defer charset="utf-8"></script>
-  <script type="text/javascript" src="scripts/stats.js" defer charset="utf-8"></script>
+  <script type="text/javascript" src="scripts/records.js" defer charset="utf-8"></script>
 </head>
 <body>
   <div id="log-reg-bar">
@@ -24,13 +25,64 @@
   </div>
 
   <form id="create">
+    <label for="discs">Discs:</label>
     <input name="discs" type="number" min="1" max="12">
-    <input name="moves" type="text" placeholder="moves">
-    <input name="time" type="text" placeholder="time">
+    <label for="moves">Moves:</label>
+    <input id="moves" type="text" size="4">
+    <label for="time">Time:</label>
+    <input id="time" type="text" size="4">
     <input name="create" type="submit" value="Save Game">
   </form>
 
-  <label for="result">Result</label>
-  <textarea id="result"></textarea>
+  <form id="update">
+    <label for="discs">Discs:</label>
+    <input name="discs" type="number" min="1" max="12">
+    <label for="moves">Moves:</label>
+    <input id="moves" type="text" size="4">
+    <label for="time">Time:</label>
+    <input id="time" type="text" size="4">
+    <label for="update-id">Id:</label>
+    <input id="update-id" type="text" size="4">
+    <input name="create" type="submit" value="Update Game">
+  </form>
+
+  <form id="show-game">
+    <label for="show-id">Id:</label>
+    <input id="show-id" type="text" size="4">
+    <input name="show-game" type="submit" value="Show Game">
+  </form>
+
+  <form id="delete-game">
+    <label for="delete-id">Id:</label>
+    <input id="delete-id" type="text" size="4">
+    <input name="delete-game" type="submit" value="Delete Game">
+  </form>
+
+  <input type="button" id="show-stats" value="View my 5 disc stats!">
+
+  <div id="stat-box"></div>
+
+  <script id="template-user-stats" type="text/x-handlebars-template">
+    <label for="user-topten">5 disc puzzle top 10 times:</label>
+    <div id="user-topten">
+      <table>
+        <tr>
+          <th>Discs</th>
+          <th>Time</th>
+          <th>Moves</th>
+        </tr>
+        {{#each games}}
+        <tr>
+          <td>{{discs}}</td>
+          <td>{{time}}</td>
+          <td>{{moves}}</td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+
+    <div>Your average 5 disc solve time is {{average5Dtime}}</div>
+    <div>You have completed the 5 disc puzzle perfectly {{perfect5Dcount}} times, which is {{perfect5Dpercent}}% of all of your 5 disc solves.</div>
+  </script>
 </body>
 </html>

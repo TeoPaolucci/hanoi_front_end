@@ -95,8 +95,7 @@ var hanoiApi = {
       url: this.backend + '/games/' + id,
       headers: {
         Authorization: 'Token token=' + token
-      },
-      dataType: 'json'
+      }
     }, callback);
   }
 }
@@ -124,5 +123,8 @@ var callback = function callback(error, data) {
     $('#result').val('status: ' + error.status + ', error: ' +error.error);
     return;
   }
-  $('#result').val(JSON.stringify(data, null, 4));
+  console.log(data);
 };
+
+// handlebars template compile
+var userDataTemplate = Handlebars.compile($("#template-user-stats").html());
