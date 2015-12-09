@@ -28,9 +28,9 @@
     <label for="discs">Discs:</label>
     <input name="discs" type="number" min="1" max="12">
     <label for="moves">Moves:</label>
-    <input id="moves" type="text" size="4">
+    <input name="moves" type="text" size="4">
     <label for="time">Time:</label>
-    <input id="time" type="text" size="4">
+    <input name="time" type="text" size="4">
     <input name="create" type="submit" value="Save Game">
   </form>
 
@@ -38,9 +38,9 @@
     <label for="discs">Discs:</label>
     <input name="discs" type="number" min="1" max="12">
     <label for="moves">Moves:</label>
-    <input id="moves" type="text" size="4">
+    <input name="moves" type="text" size="4">
     <label for="time">Time:</label>
-    <input id="time" type="text" size="4">
+    <input name="time" type="text" size="4">
     <label for="update-id">Id:</label>
     <input id="update-id" type="text" size="4">
     <input name="create" type="submit" value="Update Game">
@@ -70,18 +70,21 @@
           <th>Discs</th>
           <th>Time</th>
           <th>Moves</th>
+          <th>ID</th>
         </tr>
         {{#each games}}
         <tr>
           <td>{{discs}}</td>
           <td>{{time}}</td>
           <td>{{moves}}</td>
+          <td>{{id}}</td>
         </tr>
         {{/each}}
       </table>
     </div>
-
+    <br>
     <div>Your average 5 disc solve time is {{average5Dtime}}</div>
+    <br>
     <div>You have completed the 5 disc puzzle perfectly {{perfect5Dcount}} times, which is {{perfect5Dpercent}}% of all of your 5 disc solves.</div>
   </script>
 </body>

@@ -11,7 +11,7 @@ $(document).ready(function(){
     hanoiApi.showGame(id, userToken, callback);
   });
 
-  $('#updateGame').on('submit', function(e){
+  $('#update').on('submit', function(e){
     var id = $('#update-id').val();
     var record = wrap('game', form2object(this));
     delete record.game['update-id'];
